@@ -34,19 +34,19 @@ public class MoviesListActivity extends AppCompatActivity {
 
         getMovies();
 
-
+        // Adapter
         MovieAdapter movieAdapter = new MovieAdapter(this, movies);
-
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(movieAdapter);
 
-        //Listener for list elements, and intent to change activity with Movie
+        // Listener for list elements, and intent to change activity with Movie
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent(getApplicationContext(), MovieDetailActivity.class);
-                intent.putExtra("object", (Serializable) movies.get(i)); //send selected movie to MovieDetailActivity
+                // Send selected movie to MovieDetailActivity
+                intent.putExtra("object", (Serializable) movies.get(i));
                 startActivity(intent);
             }
         });
@@ -58,7 +58,8 @@ public class MoviesListActivity extends AppCompatActivity {
      */
     private void getMovies() {
 
-        String url = "https://api.themoviedb.org/3/search/movie?api_key=bf609558decf0378637cd30a5f0e04f2&language=en-US&query=1&page=1&include_adult=false";
+        String key = ""; // Add your themoviedb key
+        String url = "https://api.themoviedb.org/3/search/movie?api_key=" + key + "&language=en-US&query=1&page=1&include_adult=false";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -68,12 +69,12 @@ public class MoviesListActivity extends AppCompatActivity {
                         try {
                             JSONArray jsonArray = response.getJSONArray("results");
 
+                            // Loop JSONArray, and add new Movie on ArrayList.
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject movie = jsonArray.getJSONObject(i);
                                 movies.add(new Movie(movie.getInt("id"), movie.getString("original_title"), movie.getString("overview"), movie.getDouble("popularity"), movie.getInt("vote_count"), movie.getString("poster_path"), movie.getString("original_title"), movie.getString("release_date"), movie.getDouble("vote_average")));
                             }
-
                         } catch (Exception e) {
                             Log.e("JSON", "Exception: " + e);
                         }
