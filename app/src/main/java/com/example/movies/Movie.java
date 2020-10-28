@@ -1,18 +1,23 @@
 package com.example.movies;
 
-public class Movie {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Movie  implements Serializable {
 
     private int id;
     private String title;
     private Double popularity;
-    private int vote_count;
+    private long vote_count;
     private String poster_path;
     private String originalTitle;
     private String overView;
     private String releaseDate;
     private Double voteAverage;
 
-    public Movie(int id, String title, String overView, Double popularity, int vote_count, String poster_path, String originalTitle, String releaseDate, Double voteAverage) {
+    public Movie(int id, String title, String overView, Double popularity, long vote_count, String poster_path, String originalTitle, String releaseDate, Double voteAverage) {
         this.id = id;
         this.title = title;
         this.popularity = popularity;
@@ -36,7 +41,7 @@ public class Movie {
         return popularity;
     }
 
-    public int getVote_count() {
+    public long getVote_count() {
         return vote_count;
     }
 
@@ -74,4 +79,6 @@ public class Movie {
                 ", voteAverage=" + voteAverage +
                 '}';
     }
+
+
 }

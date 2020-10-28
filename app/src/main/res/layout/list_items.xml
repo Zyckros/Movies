@@ -4,59 +4,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:id="@+id/list_items">
 
-    <ImageView
-        android:id="@+id/image_movie"
-        android:layout_width="130dp"
-        android:layout_height="179dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="527dp"
-        app:srcCompat="@android:mipmap/sym_def_app_icon"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="25dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_container">
 
-    <TextView
-        android:id="@+id/textView_title_movie"
-        android:layout_width="131dp"
-        android:layout_height="22dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="32dp"
-        android:text="Titulo"
-        tools:layout_editor_absoluteX="184dp"
-        tools:layout_editor_absoluteY="30dp" />
+        <ImageView
+            android:id="@+id/image_movie"
+            android:layout_width="130dp"
+            android:layout_height="179dp"
+            app:srcCompat="@android:mipmap/sym_def_app_icon"
+            tools:ignore="MissingConstraints"
+             />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView_description_movie"
-        android:layout_width="135dp"
-        android:layout_height="23dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="77dp"
-        android:layout_marginBottom="556dp"
-        android:text="Descripcion"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="142dp" />
+            android:id="@+id/textView_title_movie"
+            android:layout_width="575dp"
+            android:layout_height="72dp"
+            android:text="Titulo:" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="132dp"
-        android:layout_height="26dp"
-        android:layout_above="@+id/textView_description_movie"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="82dp"
-        android:layout_marginBottom="30dp"
-        android:text="Puntuacion"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="81dp" />
+        <TextView
+            android:id="@+id/textView_popularity"
+            android:layout_width="575dp"
+            android:layout_height="72dp"
+            android:text="Popularidad:" />
 
+</LinearLayout>
+
+    </LinearLayout>
 </RelativeLayout>
