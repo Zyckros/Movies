@@ -1,8 +1,5 @@
 package com.example.movies;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class Movie  implements Serializable {
@@ -65,20 +62,6 @@ public class Movie  implements Serializable {
         return voteAverage;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", popularity=" + popularity +
-                ", vote_count=" + vote_count +
-                ", poster_path='" + poster_path + '\'' +
-                ", originalTitle='" + originalTitle + '\'' +
-                ", overView='" + overView + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", voteAverage=" + voteAverage +
-                '}';
-    }
 
 
 }

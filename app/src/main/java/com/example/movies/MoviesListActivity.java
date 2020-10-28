@@ -1,17 +1,11 @@
 package com.example.movies;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,14 +14,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 public class MoviesListActivity extends AppCompatActivity {
-
-    //https://api.themoviedb.org/3/movie/550?api_key=bf609558decf0378637cd30a5f0e04f2
 
     ArrayList<Movie> movies;
     private RequestQueue mQeue;
@@ -43,26 +34,22 @@ public class MoviesListActivity extends AppCompatActivity {
 
         getMovies();
 
+
         MovieAdapter movieAdapter = new MovieAdapter(this, movies);
+
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(movieAdapter);
 
-
+        //Listener for list elements, and intent to change activity with Movie
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //Get movie and send on intent to other activity
-                //movies.get(i);
-
                 Intent intent = new Intent(getApplicationContext(), MovieDetailActivity.class);
-
-                intent.putExtra("object", (Serializable) movies.get(i));
-
+                intent.putExtra("object", (Serializable) movies.get(i)); //send selected movie to MovieDetailActivity
                 startActivity(intent);
             }
         });
-
 
     }
 
@@ -88,14 +75,14 @@ public class MoviesListActivity extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
-                            Log.e("JSON", "Exception inside jsonObjectRequest: " + e);
+                            Log.e("JSON", "Exception: " + e);
                         }
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.v("JSON", "Fallo comunicacion" + error);
+                        Log.v("JSON", "response VolleyError: " + error);
                     }
                 });
         mQeue.add(jsonObjectRequest);

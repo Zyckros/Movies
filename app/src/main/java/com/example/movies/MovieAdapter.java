@@ -29,17 +29,11 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         Movie movie = getItem(position);
 
-        TextView textViewtitle = (TextView) listItemView.findViewById(R.id.textView_title_movie);
-        textViewtitle.setText("Titulo: " + movie.getTitle());
+        TextView textViewtitle = listItemView.findViewById(R.id.textView_title_movie);
+        textViewtitle.setText(movie.getTitle());
 
         TextView textViewPopularity = listItemView.findViewById(R.id.textView_popularity);
-        textViewPopularity.setText("Popularidad: " + movie.getPopularity());
-
-
-
-        //TextView textViewAverage = (TextView) listItemView.findViewById(R.id.textView_average);
-        //textViewAverage.setText(movie.getVoteAverage().toString());
-
+        textViewPopularity.setText(movie.getPopularity().toString());
 
         return listItemView;
 
